@@ -1,45 +1,38 @@
 local M = {}
 
-function M.new()
-	local instance = {}
+M.data = {}
 
-	instance.data = {}
+function M.clear()
+	M.data = {}
+end
 
-	function instance.clear()
-		instance.data = {}
-	end
-		
-	function instance.contains(key)
-		return instance.data[key] ~= nil
-	end
-		
-	function instance.set(key, value)
-		assert(instance.contains(key) == false, "You can't set a duplicate key => " .. key)
-		instance.data[key] = value
-	end
-	
-	function instance.get(key)
-		assert(instance.contains(key) == true, "The key does not exist =>" .. key)
-		return instance.data[key]
-	end
+function M.contains(key)
+	return M.data[key] ~= nil
+end
 
-	function instance.get_once(key)
-		local v = instance.get(key)
-		instance.remove(key)
-		return v;
-	end
+function M.set(key, value)
+	assert(M.contains(key) == false, "You can't set a duplicate key => " .. key)
+	M.data[key] = value
+end
 
-	function instance.remove(key)
-		assert(instance.contains(key) == true, "The key does not exist => " .. key)
-		instance.data[key] = nil
-	end
+function M.get(key)
+	assert(M.contains(key) == true, "The key does not exist =>" .. key)
+	return M.data[key]
+end
 
-	function instance.dump()
-		pprint(instance.data)
-	end
+function M.get_once(key)
+	local v = M.get(key)
+	M.remove(key)
+	return v;
+end
 
-	
-	return instance
+function M.remove(key)
+	assert(M.contains(key) == true, "The key does not exist => " .. key)
+	M.data[key] = nil
+end
+
+function M.dump()
+	pprint(M.data)
 end
 
 return M
