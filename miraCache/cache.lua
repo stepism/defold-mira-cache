@@ -11,12 +11,12 @@ function M.contains(key)
 end
 
 function M.set(key, value)
-	assert(M.contains(key) == false, "You can't set a duplicate key => " .. key)
+--	assert(M.contains(key) == false, "You can't set a duplicate key => " .. key)
 	M.data[key] = value
 end
 
 function M.get(key)
-	assert(M.contains(key) == true, "The key does not exist =>" .. key)
+--	assert(M.contains(key) == true, "The key does not exist =>" .. key)
 	return M.data[key]
 end
 
@@ -27,7 +27,7 @@ function M.get_once(key)
 end
 
 function M.remove(key)
-	assert(M.contains(key) == true, "The key does not exist => " .. key)
+--	assert(M.contains(key) == true, "The key does not exist => " .. key)
 	M.data[key] = nil
 end
 
