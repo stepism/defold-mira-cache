@@ -1,7 +1,4 @@
 # mira.state.
-hierarchical state machine.
-
-For more info, see substate-sample.script.
 
 # How to Start
 
